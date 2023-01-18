@@ -1,0 +1,37 @@
+table,sessions,sessions,2,"CREATE TABLE `sessions` (`id` text,`created_at` datetime,`updated_at` datetime,`remote_ip` text,`internal_ip` text,`last_date` datetime,`last_interval` text,`status` text,`listener_name` text,`listener_id` text,`os` text,`user_name` text,`hostname` text,`user_guid` text,`arch` text,`process` text,`p_id` integer,`note` text,PRIMARY KEY (`id`))"
+index,sqlite_autoindex_sessions_1,sessions,3,
+table,listeners,listeners,4,"CREATE TABLE `listeners` (`id` text,`created_at` datetime,`updated_at` datetime,`name` text,`addr` text,`type` text,`port` integer,PRIMARY KEY (`id`))"
+index,sqlite_autoindex_listeners_1,listeners,5,
+table,command_histories,command_histories,6,"CREATE TABLE `command_histories` (`id` text,`created_at` datetime,`updated_at` datetime,`session_id` text,`job_id` text,`command` text,`args` text,PRIMARY KEY (`id`))"
+index,sqlite_autoindex_command_histories_1,command_histories,7,
+table,command_results,command_results,8,"CREATE TABLE `command_results` (`id` text,`created_at` datetime,`updated_at` datetime,`session_id` text,`job_id` text,`command_type` text,`content` text,PRIMARY KEY (`id`))"
+index,sqlite_autoindex_command_results_1,command_results,9,
+table,users,users,10,"CREATE TABLE `users` (`id` text,`created_at` datetime,`updated_at` datetime,`username` text,`password` text,`token` text,PRIMARY KEY (`id`))"
+index,sqlite_autoindex_users_1,users,11,
+table,web_deliveries,web_deliveries,12,"CREATE TABLE `web_deliveries` (`id` text,`created_at` datetime,`updated_at` datetime,`file_name` text,`delivery_id` text,PRIMARY KEY (`id`))"
+index,sqlite_autoindex_web_deliveries_1,web_deliveries,13,
+table,scan_tasks,scan_tasks,14,"CREATE TABLE `scan_tasks` (`id` text,`created_at` datetime,`updated_at` datetime,`name` text,`session_id` text,`start_time` text,`end_time` text,`current_status` text,`completed_status` text,`target` text,`port` text,`options` text,`stat_alive_ip_cnt` integer,`stat_brute_page_cnt` integer,`stat_class_c_cnt` integer,`stat_crack_auth_cnt` integer,`stat_finger_cnt` integer,`stat_net_bios_cnt` integer,`stat_open_addr_cnt` integer,`stat_page_info_cnt` integer,`stat_service_cnt` integer,`stat_yaml_poc_cnt` integer,PRIMARY KEY (`id`))"
+index,sqlite_autoindex_scan_tasks_1,scan_tasks,15,
+table,scan_task_alive_ips,scan_task_alive_ips,16,"CREATE TABLE `scan_task_alive_ips` (`id` text,`created_at` datetime,`updated_at` datetime,`session_id` text,`task_id` text,`host` text,PRIMARY KEY (`id`))"
+index,sqlite_autoindex_scan_task_alive_ips_1,scan_task_alive_ips,17,
+table,scan_task_open_addrs,scan_task_open_addrs,18,"CREATE TABLE `scan_task_open_addrs` (`id` text,`created_at` datetime,`updated_at` datetime,`session_id` text,`task_id` text,`host` text,`port` integer,PRIMARY KEY (`id`))"
+index,sqlite_autoindex_scan_task_open_addrs_1,scan_task_open_addrs,19,
+table,scan_task_net_bios,scan_task_net_bios,20,"CREATE TABLE `scan_task_net_bios` (`id` text,`created_at` datetime,`updated_at` datetime,`session_id` text,`task_id` text,`host` text,`port` integer,`network` text,`computer_name` text,`work_group` text,`is_domain_controllers` numeric,`banner` text,PRIMARY KEY (`id`))"
+index,sqlite_autoindex_scan_task_net_bios_1,scan_task_net_bios,21,
+table,scan_task_services,scan_task_services,22,"CREATE TABLE `scan_task_services` (`id` text,`created_at` datetime,`updated_at` datetime,`session_id` text,`task_id` text,`host` text,`port` integer,`scheme` text,`banner` text,`url` text,PRIMARY KEY (`id`))"
+index,sqlite_autoindex_scan_task_services_1,scan_task_services,23,
+table,scan_task_page_infos,scan_task_page_infos,24,"CREATE TABLE `scan_task_page_infos` (`id` text,`created_at` datetime,`updated_at` datetime,`session_id` text,`task_id` text,`url` text,`status` integer,`title` text,`content_type` text,`body_length` integer,`server` text,`fingers` text,PRIMARY KEY (`id`))"
+index,sqlite_autoindex_scan_task_page_infos_1,scan_task_page_infos,25,
+table,scan_task_crack_auths,scan_task_crack_auths,27,"CREATE TABLE `scan_task_crack_auths` (`id` text,`created_at` datetime,`updated_at` datetime,`session_id` text,`task_id` text,`host` text,`port` integer,`scheme` text,`username` text,`password` text,PRIMARY KEY (`id`))"
+index,sqlite_autoindex_scan_task_crack_auths_1,scan_task_crack_auths,28,
+table,scan_task_brute_pages,scan_task_brute_pages,30,"CREATE TABLE `scan_task_brute_pages` (`id` text,`created_at` datetime,`updated_at` datetime,`session_id` text,`task_id` text,`url` text,`status` integer,`title` text,`content_type` text,`body_length` integer,PRIMARY KEY (`id`))"
+index,sqlite_autoindex_scan_task_brute_pages_1,scan_task_brute_pages,31,
+table,scan_task_yaml_po_cs,scan_task_yaml_po_cs,32,"CREATE TABLE `scan_task_yaml_po_cs` (`id` text,`created_at` datetime,`updated_at` datetime,`session_id` text,`task_id` text,`target` text,`po_c_name` text,PRIMARY KEY (`id`))"
+index,sqlite_autoindex_scan_task_yaml_po_cs_1,scan_task_yaml_po_cs,33,
+table,scan_task_class_c_stats,scan_task_class_c_stats,34,"CREATE TABLE `scan_task_class_c_stats` (`id` text,`created_at` datetime,`updated_at` datetime,`session_id` text,`task_id` text,`class_c` text,`count` integer,PRIMARY KEY (`id`))"
+index,sqlite_autoindex_scan_task_class_c_stats_1,scan_task_class_c_stats,35,
+table,scan_task_finger_stats,scan_task_finger_stats,36,"CREATE TABLE `scan_task_finger_stats` (`id` text,`created_at` datetime,`updated_at` datetime,`session_id` text,`task_id` text,`finger` text,`count` integer,PRIMARY KEY (`id`))"
+index,sqlite_autoindex_scan_task_finger_stats_1,scan_task_finger_stats,37,
+
+cbodibh2871htb6r9r1g,2022-08-08 17:36:46.7981343+08:00,2022-08-08 17:36:46.7981343+08:00,admin,A313EB99A477A1085BDF70C581445399067A2F55B9D18C040C6A5E463FFE7D01,h7e0rrtd
+
